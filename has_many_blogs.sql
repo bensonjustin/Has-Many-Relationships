@@ -17,7 +17,7 @@ CREATE TABLE posts
     content TEXT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT Now() NOT NULL,
     updated_at TIMESTAMP DEFAULT Now() NOT NULL,
-    user_id INTEGER
+    user_id INTEGER REFERENCES users(id)
 );
 DROP TABLE IF EXISTS comments;
 CREATE TABLE comments
@@ -26,6 +26,6 @@ CREATE TABLE comments
     body VARCHAR(510) DEFAULT NULL,
     created_at TIMESTAMP DEFAULT Now() NOT NULL,
     updated_at TIMESTAMP DEFAULT Now() NOT NULL,
-    user_id INTEGER,
-    post_id INTEGER
+    user_id INTEGER REFERENCES users(id),
+    post_id INTEGER REFERENCES posts(id)
 );
